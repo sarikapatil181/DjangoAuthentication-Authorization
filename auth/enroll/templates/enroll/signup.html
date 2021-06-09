@@ -1,4 +1,15 @@
 <html>
+<head>
+<style>
+.success{
+
+    color:red;
+    }
+ 
+   </style> 
+
+
+<head>
     <body>
         <form action="" method="POST" novalidate>{%csrf_token%}
 
@@ -8,8 +19,13 @@
 
          {%endfor%}
 
-            <input type="submit" value="Submit">
-
+            <input type="submit" value="Submit"><br>
+            {%if messages%}
+            {%for message in messages%}
+             <small {%if message.tags%}  class="{{message.tags}}"  {%endif%}>
+                {{message}} </small>
+            {%endfor%}
+             {%endif%}
 
         </form>
 
